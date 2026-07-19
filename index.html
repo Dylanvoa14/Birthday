@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>happy birthdayyy 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141d3d;
+    --bg-mid:#233868;
+    --bg-glow:#3a5490;
+    --star:#f7f7ff;
+    --gold:#ffcf7d;
+    --lilac:#c7d2ff;
+    --silver:#e4ebf7;
+    --card:rgba(20,29,61,0.55);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at 20% 10%, var(--bg-glow) 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 85%, var(--bg-glow) 0%, transparent 45%),
+      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 55%, var(--bg-deep) 100%);
+    background-attachment:fixed;
+    color:var(--silver);
+    font-family:'Quicksand', sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* ---------- starfield ---------- */
+  #stars{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+  }
+  .star{
+    position:absolute;
+    background:var(--star);
+    border-radius:50%;
+    opacity:0.7;
+    animation:twinkle 3.5s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0.15; transform:scale(0.85);}
+    50%{opacity:1; transform:scale(1.15);}
+  }
+
+  main{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+    margin:0 auto;
+    padding:56px 24px 100px;
+  }
+
+  /* ---------- constellation signature ---------- */
+  .constellation-wrap{
+    display:flex;
+    justify-content:center;
+    margin-bottom:8px;
+  }
+  .constellation-wrap svg{ width:220px; height:170px; overflow:visible; }
+  .constellation-wrap path{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:1.4;
+    stroke-linecap:round;
+    stroke-dasharray:400;
+    stroke-dashoffset:400;
+    animation:draw 3s ease forwards 0.4s;
+    opacity:0.85;
+  }
+  .constellation-wrap circle{
+    fill:var(--gold);
+    opacity:0;
+    animation:popin 0.5s ease forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes popin{ to{ opacity:1; } }
+
+  /* ---------- header ---------- */
+  header{
+    text-align:center;
+    margin-bottom:44px;
+  }
+  h1{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:clamp(3rem, 12vw, 5rem);
+    color:var(--gold);
+    text-shadow:0 0 24px rgba(255,207,125,0.35);
+    line-height:1;
+    letter-spacing:1px;
+  }
+  header p.sub{
+    font-family:'Caveat', cursive;
+    font-size:1.4rem;
+    color:var(--lilac);
+    margin-top:6px;
+  }
+
+  /* ---------- letter card ---------- */
+  .letter{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:36px 30px;
+    backdrop-filter:blur(6px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+    position:relative;
+  }
+  .letter::before{
+    content:"✦";
+    position:absolute;
+    top:-14px;
+    left:24px;
+    color:var(--gold);
+    font-size:1.4rem;
+  }
+  .letter p{
+    font-size:1.08rem;
+    line-height:1.75;
+    color:var(--silver);
+    margin-bottom:20px;
+    font-weight:500;
+  }
+  .letter p:last-child{ margin-bottom:0; }
+  .letter strong{
+    color:var(--gold);
+    font-weight:700;
+  }
+  .signoff{
+    font-family:'Caveat', cursive;
+    font-size:2rem;
+    color:var(--gold);
+    text-align:right;
+    margin-top:28px !important;
+  }
+
+  /* ---------- photo ---------- */
+  .polaroid{
+    margin:56px auto 0;
+    max-width:340px;
+    background:#f4f2ec;
+    padding:14px 14px 46px;
+    border-radius:4px;
+    box-shadow:0 25px 50px rgba(0,0,0,0.45);
+    transform:rotate(-3deg);
+    position:relative;
+  }
+  .polaroid img{
+    width:100%;
+    display:block;
+    border-radius:2px;
+  }
+  .polaroid figcaption{
+    font-family:'Caveat', cursive;
+    color:#26407a;
+    font-size:1.5rem;
+    text-align:center;
+    margin-top:14px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    text-align:center;
+    margin-top:64px;
+  }
+  footer .big{
+    font-family:'Caveat', cursive;
+    font-size:clamp(2.4rem, 9vw, 3.4rem);
+    color:var(--gold);
+    text-shadow:0 0 24px rgba(255,207,125,0.35);
+  }
+  footer .small{
+    font-family:'Caveat', cursive;
+    font-size:1.3rem;
+    color:var(--lilac);
+    margin-top:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .star, .constellation-wrap path, .constellation-wrap circle{
+      animation:none !important;
+      opacity:0.6;
+    }
+    .constellation-wrap path{ stroke-dashoffset:0; opacity:0.85; }
+    .constellation-wrap circle{ opacity:1; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<main>
+
+  <div class="constellation-wrap" aria-hidden="true">
+    <svg viewBox="0 0 220 170">
+      <path d="M 60 20 L 60 60 L 40 90 L 40 130 L 100 145 L 160 130 L 160 90 L 150 75 L 130 90 L 110 85 L 100 60 L 60 60" />
+      <circle cx="60" cy="20" r="3" style="animation-delay:.5s"/>
+      <circle cx="60" cy="60" r="3" style="animation-delay:1s"/>
+      <circle cx="40" cy="90" r="3" style="animation-delay:1.4s"/>
+      <circle cx="40" cy="130" r="3" style="animation-delay:1.8s"/>
+      <circle cx="100" cy="145" r="3" style="animation-delay:2.1s"/>
+      <circle cx="160" cy="130" r="3" style="animation-delay:2.4s"/>
+      <circle cx="160" cy="90" r="3" style="animation-delay:2.7s"/>
+      <circle cx="130" cy="90" r="3" style="animation-delay:2.9s"/>
+      <circle cx="110" cy="85" r="3" style="animation-delay:3.1s"/>
+      <circle cx="100" cy="60" r="3" style="animation-delay:3.3s"/>
+    </svg>
+  </div>
+
+  <header>
+    <h1>happy birthdayyy</h1>
+    <p class="sub">una carta desde el otro lado del océano ✨</p>
+  </header>
+
+  <section class="letter">
+    <p>Que es un océano de distancia si el chisme nos une.</p>
+    <p>Que estos 19 sean mil veces mejores que los 18 <em>(manifestemos, amén)</em>.</p>
+    <p>Sabes que te quiero mil, lo orgullosa y feliz que estoy por ti, aún más.</p>
+    <p>We know we are not the best with words, que darte un regalo es para cranearla un montón, pero sé que esto es algo que querías hace un montón, y qué mejor que dártelo.</p>
+    <p>Unas <strong>botitas</strong> que te acompañen, no acá, sino por las calles de Alemania: para ir a la u, para salir <em>(cuando un rave, juntas)</em>, y chance a más combinaciones de outfits.</p>
+    <p>Hope you like it.</p>
+    <p class="signoff">Love youuuu 💫<br>And more time,<br>happy birthday.</p>
+  </section>
+
+  <figure class="polaroid">
+    <img src="boots.png" alt="Botitas de regalo">
+    <figcaption>para vos ✨</figcaption>
+  </figure>
+
+  <footer>
+    <p class="big">happy birthday</p>
+    <p class="small">con todas las estrellitas de por medio 🌌</p>
+  </footer>
+
+</main>
+
+<script>
+  const starField = document.getElementById('stars');
+  const STAR_COUNT = 90;
+  for(let i=0;i<STAR_COUNT;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random()*2.2 + 0.8;
+    s.style.width = size+'px';
+    s.style.height = size+'px';
+    s.style.top = Math.random()*100+'%';
+    s.style.left = Math.random()*100+'%';
+    s.style.animationDelay = (Math.random()*3.5)+'s';
+    s.style.animationDuration = (2.5 + Math.random()*3)+'s';
+    starField.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
